@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: palindrome-generator
+  labels:
+    app: palindrome
+spec:
+  containers:
+  - name: palindrome-generator
+    image: palindrome:latest
