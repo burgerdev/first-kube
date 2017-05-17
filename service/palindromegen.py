@@ -14,6 +14,17 @@ class Handler(socketserver.StreamRequestHandler):
 
 
 if __name__ == "__main__":
+    import os
+    from argparse import ArgumentParser
 
-    s = socketserver.TCPServer(("0.0.0.0", 6666), Handler)
+    parser = ArgumentParser()
+    parser.add_argument("-b", "--bind", type=str, default=None)
+    parser.add_argument("-p", "--port", type=int, default=None)
+
+    args = parser.parse_args()
+
+    port = args.port or os.getenv("PG_PORT") or 6666
+    host = args.bind or os.getenv("PG_HOST") or "0.0.0.0"
+
+    s = socketserver.TCPServer((host, port), Handler)
     s.serve_forever()

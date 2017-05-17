@@ -7,4 +7,4 @@ metadata:
 spec:
   containers:
   - name: palindrome-generator
-    image: palindrome:latest
+    image: burgerdev/palindrome:latest
