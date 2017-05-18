@@ -5,4 +5,5 @@ metadata:
 spec:
   containers:
   - name: palindrome-client-container
-    image: palindrome-burgerdev/palindrome-client:latest
+    image: burgerdev/palindrome-client:latest
+    args: ["-c", "palindrome-generator-service:6666"]
