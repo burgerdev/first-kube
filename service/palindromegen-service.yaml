@@ -1,11 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: palindrome-generator
+  name: palindrome-generator-service
 spec:
   selector:
-    app: palindrome
+    app: palindrome-label
   ports:
-    - protocol: TCP
+    - name: palindrome-port
+      protocol: TCP
       port: 6666
       targetPort: 6666

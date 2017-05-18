@@ -4,5 +4,5 @@ metadata:
   name: palindrome-client
 spec:
   containers:
-  - name: burgerdev/palindrome-client
-    image: palindrome-client:latest
+  - name: palindrome-client-container
+    image: palindrome-burgerdev/palindrome-client:latest
