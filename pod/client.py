@@ -7,10 +7,7 @@ from itertools import count
 
 
 def connect(bind, msg, buf_size=4096):
-    # create socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    # Listen for incoming connections
     sock.connect(bind)
     sock.sendall(msg.encode("ASCII"))
     ans = sock.recv(buf_size)
@@ -33,8 +30,12 @@ if __name__ == "__main__":
 
     def f(acc, i):
         msg = "{:09d}\n".format(i)
-        ans = connect((host, port), msg)
-        print("sent [{}], received [{}]".format(msg.strip(), ans.strip()))
+        try:
+            ans = connect((host, port), msg)
+        except Exception as e:
+            print("Could not connect: {}".format(e))
+        else:
+            print("sent [{}], received [{}]".format(msg.strip(), ans.strip()))
         time.sleep(2)
 
     reduce(f, count(0))
