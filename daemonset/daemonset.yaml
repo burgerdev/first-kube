@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: palindrome-ds
+spec:
+  template:
+    metadata:
+      labels:
+        app: palindrome-ds
+    spec:
+      containers:
+      - name: palindrome-ds-container
+        image: burgerdev/palindrome:latest
+        args: ["-p", "5432"]
+        ports:
+          - containerPort: 5432

@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: palindrome-ds-service
+spec:
+  selector:
+    app: palindrome-ds
+  ports:
+    - name: ds-port
+      protocol: TCP
+      port: 54321
+      targetPort: 5432
